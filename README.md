@@ -23,5 +23,8 @@
 
 2. Descargar el código del juego del repositorio  [Código pong_juego.s](https://github.com/fabianparrea/ProyectoDigitales/blob/main/pong_juego.s)
 
-3. Cargar el archivo del ensamblador descargado previamente en ripes 
+3. Cargar en ripes el archivo del ensamblador descargado previamente
+<p align="center">
+  <img src="load.png" width="150"/>
+</p>
 ---
