@@ -27,4 +27,9 @@
 <p align="center">
   <img src="load.png" width="150"/>
 </p>
+
+4. Asegurarse que *LED Matrix 0* y *D-Pad 0* se encuentren visibles en *I/O*
+<p align="center">
+  <img src="Matrix_dpad.png" width="450"/>
+</p>
 ---
