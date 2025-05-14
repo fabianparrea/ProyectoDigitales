@@ -44,7 +44,11 @@
 -Lugar se desarrolla el juego 
 - Al presionar el botón **run** abrá 3 led's encendidos, dos azules, que representan a los 2 jugadores y uno amarillo, que es la bola
 - Cuando los jugadores empiezan a sumar puntos, aparecerán led's que llevan el conteo de los puntos 
-  
+
+<p align="center">
+  <img src="matrix_inicial.png" width="250"/>
+</p>
+
 ---
 
 ## *Jugadores y D_Pad 0 🎮*
@@ -52,10 +56,18 @@ El juego *pong* está diseñado para 2 jugadores
 - **Jugador 1:** led azul ubicado a la izquierda de la pantalla
   - **Arriba 🔼:** el jugador 1 sube 
   - **Izquierda ◀️:** el jugador 1 baja
+    
+<p align="center">
+  <img src="dpad1.png" width="150"/>
+</p>
 
 - **Jugador 2:**  led azul ubicado a la derecha de la pantalla
   - **Derecha ▶️:** el jugador 2 sube
   - **Abajo 🔽:** el jugador 2 baja
+
+<p align="center">
+  <img src="dpad2.png" width="150"/>
+</p>
 
 ---
 
