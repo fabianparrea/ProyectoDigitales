@@ -3,10 +3,10 @@
 ---
 
 ## *Integrantes del grupo👩‍💻👨‍💻*
-- **Dennis Arce Álvarez**
-- **Josué Arce Soto**
-- **Galilea González Méndez**
-- **Fabián Parreaguirre Hidalgo**
+- **Dennis Arce Álvarez.**
+- **Josué Arce Soto.**
+- **Galilea González Méndez.**
+- **Fabián Parreaguirre Hidalgo.**
 
 ---
 ## *Juego Pong en Ripes-ensamblador 🕹️*
