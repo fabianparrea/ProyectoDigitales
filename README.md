@@ -15,8 +15,8 @@
 
 ---
 
-## ¿Cómo correr el juego? ⚙️
-1. Abrir el simulador **ripes** en la computadora
+## ¿Cómo cargar el juego en su computadora? ⚙️
+1. Abrir el simulador *ripes*
 <p align="center">
   <img src="ripes.png" width="150"/>
 </p>
@@ -30,6 +30,8 @@
 
 4. Asegurarse que *LED Matrix 0* y *D-Pad 0* se encuentren visibles en *I/O*
 <p align="center">
-  <img src="Matrix_dpad.png" width="450"/>
+  <img src="Matrix_dpad.png" width="500"/>
 </p>
+
+5. Iniciar el juego con el botón verde ubicado en la parte superior izquierda
 ---
