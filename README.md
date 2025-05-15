@@ -76,11 +76,13 @@ La bola está representada por un LED amarillo que se desplaza en la matriz simu
 - La bola se mueve automáticamente al iniciar el juego, cambiando su dirección al rebotar con los jugadores o los bordes superior e inferior de la matriz.
 - Si un jugador no logra hacer contacto con la bola y esta llega al borde izquierdo o derecho, el otro jugador gana un punto.
   
-Cada vez que un jugador anota, se enciende un LED adicional en su respectiva columna de puntuación:
+Cada vez que un jugador anota, se enciende un LED rojo adicional en su respectiva columna de puntuación:
 
 - **Jugador 1:** columna 1
 - **Jugador 2:** columna 35
-
+<p align="center">
+  <img src="puntuación.png" width="200"/>
+</p>
 ---
 
 ## *Resumen del Código*
