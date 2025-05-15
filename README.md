@@ -2,20 +2,20 @@
 
 ---
 
-## *Integrantes del grupo👩‍💻👨‍💻*
+## *Integrantes del grupo*
 - **Dennis Arce Álvarez.**
 - **Josué Arce Soto.**
 - **Galilea González Méndez.**
 - **Fabián Parreaguirre Hidalgo.**
 
 ---
-## *Juego Pong en Ripes-ensamblador 🕹️*
+## *Juego Pong en Ripes-ensamblador*
 
 - El objetivo de este proyecto es escribir un programa utilizando lenguaje de ensamblador en el simulador ripes que permita visualizar el juego **pong**. La visualización del juego se realiza mediante una matriz de LEDs, donde se presenta tanto la bola como los jugadores 1 y 2 los cuales se controlan con el D-Pad.
 
 ---
 
-## *¿Cómo cargar el juego en su computadora? ⚙️*
+## *¿Cómo cargar el juego en su computadora?*
 1. Abrir el simulador *ripes*.
 <p align="center">
   <img src="ripes.png" width="150"/>
@@ -40,7 +40,7 @@
 
 ---
 
-## *LED Matrix 0 🟨🟦*
+## *LED Matrix 0*
 -Es el área donde se desarrolla el juego, mostrando a los jugadores, la bola y el sistema de puntuación.
 - Al presionar el botón **run** habrá 3 LEDsencendidos, dos azules, que representan a los 2 jugadores y uno amarillo, que es la bola.
 - Cuando los jugadores empiezan a sumar puntos, aparecerán Leds que llevan el conteo de los puntos. 
@@ -51,7 +51,7 @@
 
 ---
 
-## *Jugadores y D_Pad 0 🎮*
+## *Jugadores y D_Pad 0*
 El juego *pong* está diseñado para 2 jugadores.
 - **Jugador 1:** LED azul ubicado a la izquierda de la pantalla.
   - **Arriba 🔼:** el jugador 1 sube. 
@@ -66,12 +66,12 @@ El juego *pong* está diseñado para 2 jugadores.
   - **Abajo 🔽:** el jugador 2 baja.
 
 <p align="center">
-  <img src="dpad2.png" width="200"/>
+  <img src="dpad2.png" width="150"/>
 </p>
 
 ---
 
-## *Bola y sistema de puntuación 🟡*
+## *Bola y sistema de puntuación*
 La bola está representada por un LED amarillo que se desplaza en la matriz simulando el movimiento de la bola en el *juego Pong*
 - La bola se mueve automáticamente al iniciar el juego, cambiando su dirección al rebotar con los jugadores o los bordes superior e inferior de la matriz.
 - Si un jugador no logra hacer contacto con la bola y esta llega al borde izquierdo o derecho, el otro jugador gana un punto.
@@ -83,7 +83,7 @@ Cada vez que un jugador anota, se enciende un LED adicional en su respectiva col
 
 ---
 
-## *Resumen del Código 🧾*
+## *Resumen del Código*
 
 El programa está desarrollado en lenguaje ensamblador para el simulador Ripes donde se implementa una versión básica del *juego Pong*. Este se encuentra comentado en el repositorio [Código pong_juego.s](https://github.com/fabianparrea/ProyectoDigitales/blob/main/pong_juego.s), entre sus bloques principales están:
 
