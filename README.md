@@ -81,7 +81,7 @@ Cada vez que un jugador anota, se enciende un LED rojo adicional en su respectiv
 - **Jugador 1:** columna 1
 - **Jugador 2:** columna 35
 <p align="center">
-  <img src="puntuación.png" width="200"/>
+  <img src="puntuación.png" width="300"/>
 </p>
 ---
 
