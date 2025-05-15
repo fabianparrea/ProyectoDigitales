@@ -7,7 +7,8 @@ li s1, D_PAD_0_DOWN         ## Direccion dpad down (s1)
 li s2, D_PAD_0_UP           ## Direccion dpad up (s2)
 li s3, D_PAD_0_LEFT         ## Direccion dpad left (s3)
 li s4, D_PAD_0_RIGHT        ## Direccion dpad right (s4)
-
+li s0, 0      # puntos jugador 1
+li a0, 0      # puntos jugador 2
 _start:
     # Calcular offset: offset = (y + x*HEIGHT) * 4
     ## Cada posicion del led cambia 4 de izquierda a derecha
@@ -51,35 +52,41 @@ loop:
     bne a4, x0, presionado_dpadright   ### DPAD Right
         
 mov_bola:
-    add t4, t0, s7          ## DirecciÛn actual de la pelota
+    add t4, t0, s7          ## Direcci√≥n actual de la pelota
     sb x0, 0(t4)            ## Borrar LED anterior
 
-    ## Actualizar posiciÛn de la bola
-    add a5, s7, s10         ## Agregar la direcciÛn horizontal a la bola
-    add a5, a5, s11         ## Agregar la direcciÛn vertical a la bola (para futuras comparaciones, si es necesario)
-    
+    ## Actualizar posici√≥n de la bola
+    add a5, s7, s10         ## Agregar la direcci√≥n horizontal a la bola
+    add a5, a5, s11         ## Agregar la direcci√≥n vertical a la bola
+
     addi s6, s6, 2
     addi s5, s5, 2
-    ## Comparar si la bola choca con psj1 o psj2 (solo en direcciÛn horizontal)
-    beq a5, s5, rebote_h    ## Si la bola choca con psj1, su direcciÛn cambia
-    beq a5, s6, rebote_h    ## Si la bola choca con psj2, su direcciÛn cambia
+
+    ## Comparar si la bola choca con psj1 o psj2 (solo en direcci√≥n horizontal)
+    beq a5, s5, rebote_h
+    beq a5, s6, rebote_h
+
     addi s6, s6, -2
     addi s5, s5, -2
-    ## LÛgica de puntaje
-    li a6, 140
-    rem a7, a5, a6
-   ## blt a7, x4, punto_psj2
-    li a6, 132
-    bgt a7, a6, punto_psj1
 
-    li a6, 0              ## Limite superior
-    blt a5, a6, rebote_v    ## Si choca con lÌmite superior, su direcciÛn cambia hacia abajo
-    li a6, 3500             ## Limite inferior
-    bgt a5, a6, rebote_v    ## Si choca con lÌmite inferior, su direcciÛn cambia hacia abajo
-    
-    mv s7, a5               ## Copiar la nueva direcciÛn
-    add t5, t0, s7          ## DirecciÛn nueva
-    sb s9, 0(t5)            ## Encender LED nuevo
+    ## L√≥gica de puntaje
+    li a6, 140
+    rem a7, a5, a6           # Obtener offset dentro de la fila
+    li t6, 8                 # Columna 2 ‚Üí offset ‚â§ 8
+    ble a7, t6, punto_psj2  # Si est√° en o antes de columna 2, punto para jugador 2
+    li t6, 132               # Columna 33 ‚Üí offset ‚â• 132
+    bge a7, t6, punto_psj1  # Si est√° despu√©s de columna 33, punto para jugador 1
+
+    ## Rebote vertical
+    li a6, 140              ## Limite superior
+    blt a5, a6, rebote_v
+    li a6, 3360             ## Limite inferior
+    bgt a5, a6, rebote_v
+
+    ## Mostrar nueva posici√≥n
+    mv s7, a5
+    add t5, t0, s7
+    sb s9, 0(t5)
     j loop
 presionado_dpaddown:
     li t6, 3360             ## Limite Inferior de la paleta del psj1
@@ -134,17 +141,92 @@ rebote_v:
     j mov_bola
 
 punto_psj1:
-    # Enciendo un LED en la colunma 1 por cada punto
-    # Agrega un punto al psj1
-    j reset_bola
+    # Agrega un punto al jugador 1
+    
+    #primero limpio los leds (si no lo hac√≠a se quedaban en pantalla)
+    add t4, t0, s7       # Direcci√≥n LED bola
+    sb x0, 0(t4)         # Apagar LED bola
+    add t4, t0, s5       # Direcci√≥n LED jugador 1
+    sb x0, 0(t4)         # Apagar LED jugador 1
+    add t4, t0, s6       # Direcci√≥n LED jugador 2
+    sb x0, 0(t4)         # Apagar LED jugador 2
+    addi s0, s0, 1            # Puntos jugador 1 +1
+
+    li t1, 0                  # Acumulador para offset vertical (fila)
+    li t2, 140                # Bajo una fila
+    mv t3, s0                 # guardo en t3 el contador de puntos
+
+loop_psj1:
+    beq t3, x0, fin_psj1      # Salir si ya no quedan puntos por mostrar
+
+    add t5, t0, t1            # Direcci√≥n base + offset vertical
+    li t6, 16711680           # Enciendo el led de color rojo
+    sb t6, 0(t5)              # Escribir LED rojo
+    add t1, t1, t2            # Bajar una fila
+    addi t3, t3, -1           # Reducir el contador
+    j loop_psj1
+
+fin_psj1:
+    j reset_bola            # Reiniciar la bola 
+
+
+
+
+
 
 punto_psj2:
     # Enciendo un LED en la colunma 35 por cada punto
     # Agrega un punto al psj2
-    j reset_bola
+    #primero limpio los leds
+    add t4, t0, s7       # Direcci√≥n LED bola
+    sb x0, 0(t4)         # Apagar LED bola
+    add t4, t0, s5       # Direcci√≥n LED jugador 1
+    sb x0, 0(t4)         # Apagar LED jugador 1
+    add t4, t0, s6       # Direcci√≥n LED jugador 2
+    sb x0, 0(t4)         # Apagar LED jugador 2
+    addi a0, a0, 1            # Puntos jugador 2 +1
 
+    li t1, 0                  # Acumulador vertical (fila)
+    li t2, 140                # Paso vertical (por fila)
+    mv t3, a0                 # guardo puntos jugador 2
+
+loop_psj2:
+    beq t3, x0, fin_psj2      # Salir si ya no hay puntos por mostrar
+
+    li t4, 136                # offset horizontal para columna 35
+    add t5, t1, t4            # offset total = vertical + horizontal
+    add t5, t0, t5            # direccion absoluta
+    li t6, 16711680           # LED rojo
+    sb t6, 0(t5)              # Encender LED
+    add t1, t1, t2            # Pasar a la siguiente fila
+    addi t3, t3, -1           # Reducir puntos restantes
+    j loop_psj2
+
+fin_psj2:
+    j reset_bola
 reset_bola:
-    li s7, 1750            ## Posicion inicial de la bola
-    li s10, 4               ## Direccion inicial horizontal
-    li s11, 140            ## Direccion inicial vertical
-    j mov_bola
+    # Apagar la posici√≥n anterior de la bola
+    add t4, t0, s7
+    sb x0, 0(t4)
+
+    # Reset posici√≥n de la bola
+    li s7, 1750
+
+    # Reset direcci√≥n
+    li s10, 4
+    li s11, 140
+
+
+    # Actualizar direcciones absolutas
+    add t1, t0, s5  # direccion jugador 1
+    add t2, t0, s6  # direccion jugador 2
+    add t3, t0, s7  # direccion bola
+
+    # Encender LEDs de los jugadores y la bola
+    li s8, 255
+    li s9, 16776960
+    sb s8, 0(t1)    # jugador 1
+    sb s8, 0(t2)    # jugador 2
+    sb s9, 0(t3)    # bola
+
+    j loop
