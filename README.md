@@ -55,15 +55,15 @@
 El juego *pong* está diseñado para 2 jugadores.
 - **Jugador 1:** LED azul ubicado a la izquierda de la pantalla.
   - **Arriba 🔼:** el jugador 1 sube. 
-  - **Izquierda ◀️:** el jugador 1 baja.
+  - **Abajo 🔽:** el jugador 1 baja.
     
 <p align="center">
   <img src="dpad1.png" width="150"/>
 </p>
 
 - **Jugador 2:**  LED azul ubicado a la derecha de la pantalla.
-  - **Derecha ▶️:** el jugador 2 sube.
-  - **Abajo 🔽:** el jugador 2 baja.
+  - *Izquierda ◀️:** el jugador 2 sube.
+  - **Derecha ▶️:** el jugador 2 baja.
 
 <p align="center">
   <img src="dpad2.png" width="150"/>
